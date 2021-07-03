@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Page elements</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="bucket">
+        <form>
+            <textarea name="" id="weblist" class="weblist" placeholder="Ex:http://www.google.com" >http://www.google.com</textarea>
+            <div>
+                <div class="half">
+                    <input type="text" name="selector" id="selector" placeholder="Ex:a[href$=com]" >
+                </div>
+                <div class="half">
+                    <input type="text" name="attribute" id="attribute" placeholder="Ex:href" >
+                </div>
+            </div>
+        </form>
+        <button id="submit">
+            Find in the above list of web pages
+        </button>
+
+    </div>
+
+    <script>
+        var button = document.getElementById("submit");
+        button.addEventListener("click", function (e) {
+           
+            fetch("http://localhost:9890/",
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        weblist: document.getElementById("weblist").value,
+                        selector: document.getElementById("selector").value,
+                        attribute: document.getElementById("attribute").value
+                        })
+                })
+                .then((e)=>{
+                    return e.json();
+                })
+                .then((e)=>{
+                    console.log(e);
+
+            var newTab = window.open(e.file);
+            setTimeout(function(){
+                newTab.close();
+            },500)
+                })
+        })
+    </script>
+</body>
+
+</html>

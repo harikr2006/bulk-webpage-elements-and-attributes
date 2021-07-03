@@ -1,0 +1,64 @@
+*,html,body{
+    padding:0;
+    margin:0;
+    font-size:1rem;
+    box-sizing: border-box;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+body{
+    background-color:#fff;
+}
+.bucket{
+    width:900px;
+    background-color: #fafafa;
+    min-height: 100px;
+    padding:20px;
+    margin:0 auto;
+    border-radius: 10px;
+    margin-top: 30px;
+    box-shadow: 0 0 20px 5px #ccc;
+
+    &::after{
+        content: " ";
+        display: table;
+        clear: both;
+    }
+    .weblist{
+        width:100%;
+        min-height: 80px;
+        border:1px solid #ccc;
+        resize: vertical;
+        border-radius: 6px;
+        
+        padding:20px 15px;
+    }
+    .half{
+        margin-top: 20px;
+        width:50%;
+        float: left;
+        
+        &:nth-of-type(1){
+            padding-right:10px;
+        }
+        &:nth-of-type(2){
+            padding-left:10px;
+        }
+        input{
+            width:100%;
+            border:1px solid #ccc;
+            height:40px;
+            border-radius: 4px;
+            padding:5px 10px;
+        }
+    }
+    button{
+        margin-top:20px;
+        width:100%;
+        border-radius: 4px;
+        padding:10px 15px;
+        text-align: center;
+        border:1px solid rgb(142, 192, 5);
+        background-color:rgb(142, 192, 5);
+        cursor: pointer;
+    }
+}
